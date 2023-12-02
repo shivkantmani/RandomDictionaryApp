@@ -16,9 +16,9 @@ app.get("/", async (req,res) =>{
               }
         })
         const result = response.data;
-        const response2 = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${result}`);
-        const result2 = response2.body;
-        console.log(result2);
+        const response2 = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${result.word}`);
+        const result2 = response2.data;
+        res.render("index.ejs",{data : result2})
     }
     catch (error){
         console.log("error");
